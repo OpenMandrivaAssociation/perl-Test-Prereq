@@ -19,7 +19,6 @@ BuildRequires:  perl(Module::Info)
 BuildRequires:  perl(Module::CoreList)
 BuildRequires:  perl(Test::Builder::Tester)
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description 
 The prereq_ok() function examines the modules it finds in blib/lib/,
