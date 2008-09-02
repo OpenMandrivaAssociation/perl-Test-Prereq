@@ -1,7 +1,7 @@
 %define module  Test-Prereq
 %define name    perl-%{module}
-%define version 1.033
-%define release %mkrel 4
+%define version 1.034
+%define release %mkrel 1
 
 Name:           %{name}
 Version:        %{version}
@@ -42,6 +42,7 @@ rm -rf %{buildroot}
 %check
 # this test rely on network to fetch data from CPAN
 rm -f t/get_from_prereqs.t
+perl -pi -e 's/get_from_prereqs.t//' t/test_manifest
 %{__make} test
 
 %clean 
