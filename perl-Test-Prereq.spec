@@ -1,16 +1,16 @@
-%define module  Test-Prereq
-%define name    perl-%{module}
-%define version 1.037
-%define release %mkrel 2
+%define upstream_name    Test-Prereq
+%define upstream_version 1.037
 
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 3
+
 Summary:        Check if Makefile.PL has the right pre-requisites
-License:        GPL or Artistic
+License:        GPL+ or Artistic
 Group:          Development/Perl
-URL:            http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/Test/%{module}-%{version}.tar.bz2
+URL:            http://search.cpan.org/dist/%{upstream_name}
+Source0:        http://www.cpan.org/modules/by-module/Test/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:  perl-devel
 %endif
@@ -18,8 +18,9 @@ BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Info)
 BuildRequires:  perl(Module::CoreList)
 BuildRequires:  perl(Test::Builder::Tester)
+
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 
 %description 
 The prereq_ok() function examines the modules it finds in blib/lib/,
@@ -29,7 +30,7 @@ compares the remaining list of modules to those in the PREREQ_PM section of
 Makefile.PL.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -43,7 +44,7 @@ rm -rf %{buildroot}
 # this test rely on network to fetch data from CPAN
 rm -f t/get_from_prereqs.t
 perl -pi -e 's/get_from_prereqs.t//' t/test_manifest
-%{__make} test
+%make test
 
 %clean 
 rm -rf %{buildroot}
@@ -53,5 +54,3 @@ rm -rf %{buildroot}
 %doc Changes README LICENSE
 %{perl_vendorlib}/Test
 %{_mandir}/*/*
-
-
