@@ -1,7 +1,7 @@
 %define module  Test-Prereq
 %define name    perl-%{module}
 %define version 1.037
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:           %{name}
 Version:        %{version}
