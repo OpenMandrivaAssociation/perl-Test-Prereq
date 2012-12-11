@@ -1,26 +1,23 @@
 %define upstream_name    Test-Prereq
 %define upstream_version 1.037
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 3
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	4
 
-Summary:        Check if Makefile.PL has the right pre-requisites
-License:        GPL+ or Artistic
-Group:          Development/Perl
-URL:            http://search.cpan.org/dist/%{upstream_name}
-Source0:        http://www.cpan.org/modules/by-module/Test/%{upstream_name}-%{upstream_version}.tar.bz2
+Summary:	Check if Makefile.PL has the right pre-requisites
+License:	GPL+ or Artistic
+Group:		Development/Perl
+URL:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Test/%{upstream_name}-%{upstream_version}.tar.bz2
 
-%if %{mdkversion} < 1010
-BuildRequires:  perl-devel
-%endif
-BuildRequires:  perl(Module::Build)
-BuildRequires:  perl(Module::Info)
-BuildRequires:  perl(Module::CoreList)
-BuildRequires:  perl(Test::Builder::Tester)
+BuildRequires:	perl-devel
+BuildRequires:	perl(Module::Build)
+BuildRequires:	perl(Module::Info)
+BuildRequires:	perl(Module::CoreList)
+BuildRequires:	perl(Test::Builder::Tester)
 
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
+BuildArch:	noarch
 
 %description 
 The prereq_ok() function examines the modules it finds in blib/lib/,
@@ -33,11 +30,10 @@ Makefile.PL.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %check
@@ -46,11 +42,55 @@ rm -f t/get_from_prereqs.t
 perl -pi -e 's/get_from_prereqs.t//' t/test_manifest
 %make test
 
-%clean 
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc Changes README LICENSE
 %{perl_vendorlib}/Test
 %{_mandir}/*/*
+
+
+%changelog
+* Wed Sep 01 2010 Jérôme Quelin <jquelin@mandriva.org> 1.37.0-3mdv2011.0
++ Revision: 575126
+- rebuild with %%perl_convert_version
+
+* Wed Sep 01 2010 Jérôme Quelin <jquelin@mandriva.org> 1.037-2mdv2011.0
++ Revision: 575118
+- rebuild
+
+* Sun Jun 07 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.037-1mdv2010.0
++ Revision: 383543
+- update to new version 1.037
+
+* Tue Jan 20 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.036-1mdv2009.1
++ Revision: 331593
+- update to new version 1.036
+
+* Tue Sep 02 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.034-1mdv2009.0
++ Revision: 279087
+- new version
+
+* Thu Jul 31 2008 Thierry Vignaud <tv@mandriva.org> 1.033-4mdv2009.0
++ Revision: 258577
+- rebuild
+
+* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 1.033-3mdv2009.0
++ Revision: 246549
+- rebuild
+
+* Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 1.033-1mdv2008.1
++ Revision: 140721
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Thu Mar 22 2007 Guillaume Rousse <guillomovitch@mandriva.org> 1.033-1mdv2007.1
++ Revision: 147957
+- drop network-dependent tests
+- this is a noarch package
+- Import perl-Test-Prereq
+
+* Thu Mar 22 2007 Guillaume Rousse <guillomovitch@mandriva.org> 1.033-1mdv2007.1
+- first mdv release
+
