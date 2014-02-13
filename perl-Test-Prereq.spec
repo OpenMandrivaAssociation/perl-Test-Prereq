@@ -1,15 +1,15 @@
 %define upstream_name    Test-Prereq
-%define upstream_version 1.037
+%define upstream_version 1.038
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	4
+Release:	1
 
 Summary:	Check if Makefile.PL has the right pre-requisites
 License:	GPL+ or Artistic
 Group:		Development/Perl
 URL:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Test/%{upstream_name}-%{upstream_version}.tar.bz2
+Source0:	http://www.cpan.org/modules/by-module/Test/Test-Prereq-%{upstream_version}.tar.gz
 
 BuildRequires:	perl-devel
 BuildRequires:	perl(Module::Build)
@@ -93,4 +93,5 @@ perl -pi -e 's/get_from_prereqs.t//' t/test_manifest
 
 * Thu Mar 22 2007 Guillaume Rousse <guillomovitch@mandriva.org> 1.033-1mdv2007.1
 - first mdv release
+
 
