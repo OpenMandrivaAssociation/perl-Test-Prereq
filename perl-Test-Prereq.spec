@@ -1,9 +1,9 @@
 %define upstream_name    Test-Prereq
-%define upstream_version 1.038
+%define upstream_version 1.039
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Release:	1
 
 Summary:	Check if Makefile.PL has the right pre-requisites
 License:	GPL+ or Artistic
@@ -12,10 +12,18 @@ URL:		http://search.cpan.org/dist/%{upstream_name}
 Source0:	http://www.cpan.org/modules/by-module/Test/Test-Prereq-%{upstream_version}.tar.gz
 
 BuildRequires:	perl-devel
-BuildRequires:	perl(Module::Build)
-BuildRequires:	perl(Module::Info)
-BuildRequires:	perl(Module::CoreList)
-BuildRequires:	perl(Test::Builder::Tester)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.40.0
+BuildRequires:  perl(Module::CoreList)
+BuildRequires:  perl(Module::Info)
+BuildRequires:  perl(File::Spec::Functions)
+BuildRequires:  perl(Test::More) >= 1.1.9
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Info)
+BuildRequires:  perl(Module::CoreList)
+BuildRequires:  perl(Test::Builder::Tester)
+BuildRequires:  perl(Test::Builder)
+BuildRequires:  perl(Test::Pod)
+BuildRequires:  perl(Test::Pod::Coverage)
 
 BuildArch:	noarch
 

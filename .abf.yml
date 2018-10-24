@@ -1,4 +1,5 @@
 removed_sources:
   Test-Prereq-1.037.tar.bz2: 2282239ced3237ce007848b63a9e7737a04ce867
-sources:
   Test-Prereq-1.038.tar.gz: 884abf9ff1d9f15a1ba6f32896083ce716138543
+sources:
+  Test-Prereq-1.039.tar.gz: 0ec88bb539591bdbf5d5b77884d914f1657b6234
