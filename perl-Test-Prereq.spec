@@ -11,6 +11,7 @@ Group:		Development/Perl
 URL:		https://search.cpan.org/dist/%{upstream_name}
 Source0:	http://www.cpan.org/modules/by-module/Test/Test-Prereq-%{upstream_version}.tar.gz
 
+BuildRequires:	make
 BuildRequires:	perl-devel
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.40.0
 BuildRequires:  perl(Module::CoreList)
