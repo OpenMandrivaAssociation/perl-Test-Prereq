@@ -1,15 +1,15 @@
 %define upstream_name    Test-Prereq
-%define upstream_version 1.039
+%define upstream_version 2.005
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
+Version:	%{upstream_version}
 Release:	1
 
 Summary:	Check if Makefile.PL has the right pre-requisites
 License:	GPL+ or Artistic
 Group:		Development/Perl
-URL:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Test/Test-Prereq-%{upstream_version}.tar.gz
+URL:		https://github.com/briandfoy/test-prereq
+Source0:	https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Test-Prereq-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
