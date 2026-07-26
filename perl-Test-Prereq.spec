@@ -1,15 +1,13 @@
 %define upstream_name    Test-Prereq
-%define upstream_version 2.005
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	1
+Version:	2.005
+Release:	2
 
 Summary:	Check if Makefile.PL has the right pre-requisites
 License:	GPL+ or Artistic
 Group:		Development/Perl
 URL:		https://github.com/briandfoy/test-prereq
-Source0:	https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Test-Prereq-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Test-Prereq-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -36,7 +34,7 @@ compares the remaining list of modules to those in the PREREQ_PM section of
 Makefile.PL.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -60,9 +58,7 @@ perl -pi -e 's/get_from_prereqs.t//' t/test_manifest
 %changelog
 * Wed Sep 01 2010 Jérôme Quelin <jquelin@mandriva.org> 1.37.0-3mdv2011.0
 + Revision: 575126
-- rebuild with %%perl_convert_version
-
-* Wed Sep 01 2010 Jérôme Quelin <jquelin@mandriva.org> 1.037-2mdv2011.0
+- rebuild with %2.005 Wed Sep 01 2010 Jérôme Quelin <jquelin@mandriva.org> 1.037-2mdv2011.0
 + Revision: 575118
 - rebuild
 
